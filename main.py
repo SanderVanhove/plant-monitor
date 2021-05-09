@@ -1,20 +1,47 @@
-from picamera import PiCamera
-from datetime import datetime
 from time import sleep
-from os import path, mkdir
 
-PIC_FOLDER = "./pics/"
-PIC_DELAY = 10 * 60 # 10 minutes
+from camera import capture_picture
+from sensors import get_metrics
+from webscript import post_message
+from config import load_config
+from display import register_display, show_error, update_info
 
-if not path.exists(PIC_FOLDER):
-    mkdir(PIC_FOLDER)
 
-camera = PiCamera()
+def main():
+    config = load_config()
 
-for _ in range(6):
-    date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S.jpg")
-    pic_path = path.join(PIC_FOLDER, date)
+    register_display()
 
-    camera.capture(pic_path)
+    while True:
 
-    sleep(PIC_DELAY)
+        print("I'm waking up :D")
+
+        # Get Values
+        metric_values = get_metrics()
+        update_info(metric_values)
+        print("Measured some values:", metric_values)
+
+        # Take a pic
+        pic_path = capture_picture(config.pic_dir)
+        print("Snapped a pic:", pic_path)
+
+        # Post values to Waylay
+        post_success = post_message(metric_values, config)
+
+        if post_success:
+            print("Values posted.")
+        else:
+            print("Something went wrong :/")
+
+        print()
+
+        sleep(config.measure_interval)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        show_error(type(e).__name__)
+
+        raise e

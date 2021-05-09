@@ -1,0 +1,5 @@
+{
+    "measure_interval": 600,
+    "pic_dir": "pics/",
+    "webscript_url": "https://webscripts-io.waylay.io/api/v1/<tenant>/<webscript-name>/<secret>"
+}
