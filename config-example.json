@@ -1,5 +1,8 @@
 {
-    "measure_interval": 600,
+    "measure_interval": 10,
     "pic_dir": "pics/",
-    "webscript_url": "https://webscripts-io.waylay.io/api/v1/<tenant>/<webscript-name>/<secret>"
+    "data_url": "https://api-io.waylay.io/data/v1/events",
+    "resource_id": "plant-monitor",
+    "api_key": "key",
+    "api_secret": "secret"
 }
