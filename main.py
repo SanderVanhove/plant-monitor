@@ -13,25 +13,17 @@ def main():
     register_display()
 
     while True:
-
-        print("I'm waking up :D")
-
         # Get Values
         metric_values = get_metrics()
         update_info(metric_values)
         print("Measured some values:", metric_values)
 
         # Take a pic
-        pic_path = capture_picture(config.pic_dir)
+        pic_path = capture_picture(config)
         print("Snapped a pic:", pic_path)
 
         # Post values to Waylay
         post_success = post_message(metric_values, config)
-
-        if post_success:
-            print("Values posted.")
-        else:
-            print("Something went wrong :/")
 
         print()
 

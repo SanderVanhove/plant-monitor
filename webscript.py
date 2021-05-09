@@ -6,6 +6,7 @@ from os import path
 
 from sensors import SensorReading
 from config import Config
+from display import show_error
 
 
 def post_message(data: SensorReading, config: Config) -> bool:
@@ -16,7 +17,10 @@ def post_message(data: SensorReading, config: Config) -> bool:
     request = post(url, json=json_data, auth=auth)
 
     if not request.ok:
+        show_error("Post failed.")
         warnings.warn(request.content)
         return False
+
+    print("Values posted.")
     
     return True

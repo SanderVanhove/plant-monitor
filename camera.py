@@ -3,15 +3,19 @@ from datetime import datetime
 from os import path, mkdir
 from os.path import isdir
 
+from config import Config
 
-def capture_picture(pic_dir: str = "pics/") -> str:
+
+def capture_picture(config: Config) -> str:
     """ 
     Snap a picture and return its path.
     """
+    pic_dir = config.pic_dir
     if not isdir(pic_dir):
         mkdir(pic_dir)
 
     camera = PiCamera()
+    camera.resolution = config.pic_resolution
 
     try:
         date = datetime.now().strftime("%Y-%m-%d-%H-%M-%S.jpg")

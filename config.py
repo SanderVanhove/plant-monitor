@@ -6,6 +6,7 @@ import json
 @dataclass
 class Config:
     pic_dir: str
+    pic_resolution: str
     measure_interval: float
     data_url: str
     resource_id: str
@@ -21,6 +22,7 @@ def load_config() -> Config:
 
         return Config(
             config["pic_dir"],
+            config["pic_resolution"],
             config["measure_interval"],
             config["data_url"],
             config["resource_id"],
