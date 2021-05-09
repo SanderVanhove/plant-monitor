@@ -19,10 +19,11 @@ def register_display():
         if not event & Button.EV_SINGLE_CLICK:
             return
 
-        metric_values = get_metrics()
-
         lcd.backlight(True)
+
+        metric_values = get_metrics()
         update_info(metric_values)
+
 
         sleep(5)
 

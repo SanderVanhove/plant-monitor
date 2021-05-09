@@ -1,9 +1,10 @@
 {
-    "measure_interval": 10,
+    "measure_interval": 600,
     "pic_dir": "pics/",
     "pic_resolution": "3280x2464",
     "data_url": "https://api-io.waylay.io/data/v1/events",
     "resource_id": "plant-monitor",
     "api_key": "key",
-    "api_secret": "secret"
+    "api_secret": "secret",
+    "data_repo": "git@github.com:SanderVanhove/plant-monitor-data.git"
 }

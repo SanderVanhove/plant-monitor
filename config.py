@@ -12,6 +12,7 @@ class Config:
     resource_id: str
     api_key: str
     api_secret: str
+    data_repo: str
 
 
 def load_config() -> Config:
@@ -28,4 +29,5 @@ def load_config() -> Config:
             config["resource_id"],
             config["api_key"],
             config["api_secret"],
+            config["data_repo"],
         )
