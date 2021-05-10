@@ -13,6 +13,7 @@ class Config:
     api_key: str
     api_secret: str
     data_repo: str
+    reset_commit: str
 
 
 def load_config() -> Config:
@@ -30,4 +31,5 @@ def load_config() -> Config:
             config["api_key"],
             config["api_secret"],
             config["data_repo"],
+            config["reset_commit"],
         )

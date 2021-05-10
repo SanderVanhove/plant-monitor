@@ -23,11 +23,17 @@ def main():
         pic_path = capture_picture(config)
         print("Snapped a pic:", pic_path)
 
-        # Post values to Waylay
-        post_success = post_message(metric_values, config)
+        try:
+            # Post values to Waylay
+            post_success = post_message(metric_values, config)
+        except Exception as e:
+            show_error(type(e).__name__)
 
-        # Commit to git data repo
-        commit_data(metric_values, pic_path, config)
+        try:
+            # Commit to git data repo
+            commit_data(metric_values, pic_path, config)
+        except Exception as e:
+            show_error(type(e).__name__)
 
         print()
 
@@ -35,9 +41,9 @@ def main():
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        show_error(type(e).__name__)
-
-        raise e
+    while True:
+        try:
+            main()
+        except Exception as e:
+            show_error(type(e).__name__)
+            raise e

@@ -6,5 +6,6 @@
     "resource_id": "plant-monitor",
     "api_key": "key",
     "api_secret": "secret",
-    "data_repo": "git@github.com:SanderVanhove/plant-monitor-data.git"
+    "data_repo": "git@github.com:SanderVanhove/plant-monitor-data.git",
+    "reset_commit": "98ujhsd298"
 }

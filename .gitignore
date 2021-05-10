@@ -1,4 +1,8 @@
 pics/
+config.json
+data-repo/
+boot_start.sh
+Makefile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

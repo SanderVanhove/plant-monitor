@@ -18,6 +18,8 @@ def commit_data(metric_values: SensorReading, pic_path: str, config: Config):
         mkdir(GIT_DIR)
         os.system(f"git clone {config.data_repo} {GIT_DIR}")
 
+    os.system(f"cd {GIT_DIR};git reset --hard {config.reset_commit}")
+
     # Add the current values and picture
     values_path = path.join(GIT_DIR, "values.json")
     with open(values_path, "w") as values_file:
@@ -29,4 +31,4 @@ def commit_data(metric_values: SensorReading, pic_path: str, config: Config):
     copyfile(pic_path, git_pic_path)
 
     # Commit and push
-    os.system(f"cd {GIT_DIR};git add *;git commit -m 'Update values and picture';git push")
+    os.system(f"cd {GIT_DIR};git add *;git commit -m 'Update values and picture';git push -f")
