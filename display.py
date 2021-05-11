@@ -1,4 +1,5 @@
 from time import sleep
+from datetime import datetime
 
 from grove.factory import Factory
 from grove.button import Button
@@ -37,7 +38,7 @@ def update_info(metric_values: SensorReading):
 
     lcd.clear()
     lcd.setCursor(0, 0)
-    lcd.write(f"T: {metric_values.temperature} H: {metric_values.humidity}")
+    lcd.write(f"T: {metric_values.temperature} H: {metric_values.humidity} {datetime.now().minute}")
 
     lcd.setCursor(1, 0)
     lcd.write(f"M: {metric_values.moisture} L: {metric_values.light}")
