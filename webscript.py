@@ -11,10 +11,7 @@ from display import show_error
 
 def post_message(data: SensorReading, config: Config) -> bool:
     json_data = asdict(data)
-    url = path.join(config.data_url, config.resource_id)
-    auth = (config.api_key, config.api_secret)
-
-    request = post(url, json=json_data, auth=auth)
+    request = post(config.webscript_url, json=json_data)
 
     if not request.ok:
         show_error("Post failed.")

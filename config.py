@@ -8,10 +8,7 @@ class Config:
     pic_dir: str
     pic_resolution: str
     measure_interval: float
-    data_url: str
-    resource_id: str
-    api_key: str
-    api_secret: str
+    webscript_url: str
     data_repo: str
     reset_commit: str
 
@@ -26,10 +23,7 @@ def load_config() -> Config:
             config["pic_dir"],
             config["pic_resolution"],
             config["measure_interval"],
-            config["data_url"],
-            config["resource_id"],
-            config["api_key"],
-            config["api_secret"],
+            config["webscript_url"],
             config["data_repo"],
             config["reset_commit"],
         )
