@@ -20,20 +20,16 @@ def main():
         print("Measured some values:", metric_values)
 
         # Take a pic
-        pic_path = capture_picture(config)
-        print("Snapped a pic:", pic_path)
+        pic_path = None
+        if metric_values.light > 0:
+            pic_path = capture_picture(config)
+            print("Snapped a pic:", pic_path)
 
-        try:
-            # Post values to Waylay
-            post_success = post_message(metric_values, config)
-        except Exception as e:
-            show_error(type(e).__name__)
+        # Post values to Waylay
+        post_success = post_message(metric_values, config)
 
-        try:
-            # Commit to git data repo
-            commit_data(metric_values, pic_path, config)
-        except Exception as e:
-            show_error(type(e).__name__)
+        # Commit to git data repo
+        commit_data(metric_values, pic_path, config)
 
         print()
 
