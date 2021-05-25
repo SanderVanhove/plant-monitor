@@ -30,7 +30,7 @@ def commit_data(metric_values: SensorReading, pic_path: str, config: Config):
     values_dict["date"] = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         
     if pic_path:
-        os.system(f"cd {GIT_DIR};git reset --hard {config.reset_commit}")
+        os.system(f"cd {GIT_DIR};git reset --hard {config.reset_commit};git reflog expire --expire=now --all;git repack -ad;git prune")
         values_dict["image_date"] = values_dict["date"]
     elif "image_data" in old_values:
         values_dict["image_date"] = old_values["image_date"]
